@@ -22,8 +22,15 @@ func main() {
 
 		userInput := scanner.Text()
 		cleanedInput := cleanInput(userInput)
-		firstWordofCmd := cleanedInput[0]
-		fmt.Println("Your command was:", firstWordofCmd)
+		firstWord := cleanedInput[0]
+
+		value, ok := registry[firstWord]
+
+		if ok {
+			value.callback()
+		} else {
+			fmt.Println("Command not found.")
+		}
 	}
 
 }
