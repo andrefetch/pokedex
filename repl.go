@@ -35,7 +35,8 @@ func startRepl(cfg *config) {
 		if ok {
 			value.callback(cfg)
 		} else {
-			fmt.Println("Command not found.")
+			fmt.Printf("%s is not a command, type help", userInput)
+			fmt.Println()
 		}
 	}
 }
