@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 )
 
 type LocationsResponse struct {
@@ -32,14 +33,12 @@ func commandMapf(cfg *config) error {
 
 	req, err := http.Get(fullURL)
 	if err != nil {
-		fmt.Errorf("Error occured while retrieving data", err)
-		return err
+		return fmt.Errorf("Error occured while retrieving data: %v", err)
 	}
 
 	body, err := io.ReadAll(req.Body)
 	if err != nil {
-		fmt.Errorf("Error occured while retrieving data", err)
-		return err
+		return fmt.Errorf("Error occured while retrieving data: %v", err)
 	}
 
 	defer req.Body.Close()
@@ -57,4 +56,45 @@ func commandMapf(cfg *config) error {
 	}
 
 	return nil
+}
+
+func commandMapb(cfg *config) error {
+
+	const baseURL = "https://pokeapi.co/api/v2/location-area"
+
+	fullURL := baseURL
+
+	if cfg.prevURL != nil {
+		fullURL = *cfg.prevURL
+	} else {
+		fmt.Println("you're on the first page")
+		os.Exit(1)
+	}
+
+	req, err := http.Get(fullURL)
+	if err != nil {
+		return fmt.Errorf("Error occured while retrieving data: %v", err)
+	}
+
+	body, err := io.ReadAll(req.Body)
+	if err != nil {
+		return fmt.Errorf("Error occured while retrieving data: %v", err)
+	}
+
+	defer req.Body.Close()
+
+	var locationsResponse LocationsResponse
+	if err := json.Unmarshal(body, &locationsResponse); err != nil {
+		log.Fatalf("Unmarshal error: %v", err)
+	}
+
+	cfg.nextURL = locationsResponse.Next
+	cfg.prevURL = locationsResponse.Previous
+
+	for _, loc := range locationsResponse.Results {
+		fmt.Println(loc.Name)
+	}
+
+	return nil
+
 }
