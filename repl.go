@@ -5,15 +5,11 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/andrefetch/pokedex/internal/commands"
 )
 
-type config struct {
-	commands map[string]cliCommand
-	nextURL  *string
-	prevURL  *string
-}
-
-func startRepl(cfg *config) {
+func startRepl(cfg *commands.Config) {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
@@ -30,10 +26,12 @@ func startRepl(cfg *config) {
 		cleanedInput := cleanInput(userInput)
 		firstWord := cleanedInput[0]
 
-		value, ok := cfg.commands[firstWord]
+		value, ok := cfg.Commands[firstWord]
 
 		if ok {
-			value.callback(cfg)
+			if err := value.Callback(cfg); err != nil {
+				fmt.Fprintln(os.Stderr, err)
+			}
 		} else {
 			fmt.Printf("%s is not a command, type help", userInput)
 			fmt.Println()
