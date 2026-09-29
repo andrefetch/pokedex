@@ -11,6 +11,7 @@ func main() {
 	cfg := &commands.Config{
 		Commands:      commands.GetCommands(),
 		PokeapiClient: pokeapi.NewClient(5*time.Second, 5*time.Minute),
+		PokemonCaught: make(map[string]pokeapi.Pokemon),
 	}
 	startRepl(cfg)
 }

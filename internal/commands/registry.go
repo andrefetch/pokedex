@@ -33,5 +33,10 @@ func GetCommands() map[string]Command {
 			Description: "explore <area-name>: Lists Pokemon found in a map location.",
 			Callback:    CommandExplore,
 		},
+		"catch": {
+			Name:        "catch",
+			Description: "catch <pokemon-name>: attempts to catch a pokemon in that desired area.",
+			Callback:    CommandCatch,
+		},
 	}
 }
