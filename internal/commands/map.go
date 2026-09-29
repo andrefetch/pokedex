@@ -2,11 +2,11 @@ package commands
 
 import "fmt"
 
-func CommandMapf(cfg *Config) error {
+func CommandMapf(cfg *Config, args ...string) error {
 	return displayLocations(cfg, cfg.nextURL)
 }
 
-func CommandMapb(cfg *Config) error {
+func CommandMapb(cfg *Config, args ...string) error {
 	if cfg.prevURL == nil {
 		fmt.Println("you're on the first page")
 		return nil

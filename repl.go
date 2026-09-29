@@ -15,21 +15,24 @@ func startRepl(cfg *commands.Config) {
 	for {
 		fmt.Print("Pokedex > ")
 
-		scanner.Scan()
-
-		if err := scanner.Err(); err != nil {
-			fmt.Fprintln(os.Stderr, "error reading input:", err)
+		if !scanner.Scan() {
+			if err := scanner.Err(); err != nil {
+				fmt.Fprintln(os.Stderr, "error reading input:", err)
+			}
 			break
 		}
 
 		userInput := scanner.Text()
 		cleanedInput := cleanInput(userInput)
+		if len(cleanedInput) == 0 {
+			continue
+		}
 		firstWord := cleanedInput[0]
 
 		value, ok := cfg.Commands[firstWord]
 
 		if ok {
-			if err := value.Callback(cfg); err != nil {
+			if err := value.Callback(cfg, cleanedInput[1:]...); err != nil {
 				fmt.Fprintln(os.Stderr, err)
 			}
 		} else {

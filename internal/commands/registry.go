@@ -3,7 +3,7 @@ package commands
 type Command struct {
 	Name        string
 	Description string
-	Callback    func(*Config) error
+	Callback    func(*Config, ...string) error
 }
 
 func GetCommands() map[string]Command {
@@ -27,6 +27,11 @@ func GetCommands() map[string]Command {
 			Name:        "mapb",
 			Description: "Displays a list of map locations 20 results backwards.",
 			Callback:    CommandMapb,
+		},
+		"explore": {
+			Name:        "explore",
+			Description: "explore <area-name>: Lists Pokemon found in a map location.",
+			Callback:    CommandExplore,
 		},
 	}
 }
