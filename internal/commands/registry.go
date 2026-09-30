@@ -10,7 +10,7 @@ func GetCommands() map[string]Command {
 	return map[string]Command{
 		"help": {
 			Name:        "help",
-			Description: "Displays a help message",
+			Description: "Displays this message",
 			Callback:    CommandHelp,
 		},
 		"exit": {
