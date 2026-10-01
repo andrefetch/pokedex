@@ -8,4 +8,5 @@ type Config struct {
 	PokemonCaught map[string]pokeapi.Pokemon
 	nextURL       *string
 	prevURL       *string
+	Pokeballs     map[string]int
 }
