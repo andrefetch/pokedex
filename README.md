@@ -14,13 +14,7 @@ go install github.com/andrefetch/pokedex@latest
 pokedex
 ```
 
-Ensure Go’s binary directory is on your `PATH`. With the default Go configuration, you can add it for your current terminal session using:
-
-```sh
-export PATH="$PATH:$(go env GOPATH)/bin"
-```
-
-### Run from Source
+### Install from source
 
 ```sh
 git clone https://github.com/andrefetch/pokedex.git
