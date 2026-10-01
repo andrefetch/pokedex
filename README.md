@@ -7,7 +7,7 @@ An interactive command-line Pokedex built in Go that uses HTTP requests to fetch
 
 ## Installation
 
-Requires Go. Install it from [go.dev](https://go.dev/doc/install).
+Requires Go. Install it @ [go.dev](https://go.dev/doc/install).
 
 ```sh
 go install github.com/andrefetch/pokedex@latest
