@@ -12,7 +12,7 @@ func main() {
 		Commands:      commands.GetCommands(),
 		PokeapiClient: pokeapi.NewClient(5*time.Second, 5*time.Minute),
 		PokemonCaught: make(map[string]pokeapi.Pokemon),
-		Pokeballs: map[string]int{
+		PokeballTypes: map[string]int{
 			"pokeball":   10,
 			"greatball":  0,
 			"ultraball":  0,
