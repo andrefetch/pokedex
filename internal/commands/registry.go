@@ -48,5 +48,10 @@ func GetCommands() map[string]Command {
 			Description: "displays all pokemon caught, in your pokedex.",
 			Callback:    CommandPokedex,
 		},
+		"pokeballs": {
+			Name:        "pokeballs",
+			Description: "displays all the pokeballs you have in your inventory.",
+			Callback:    CommandPokeballs,
+		},
 	}
 }

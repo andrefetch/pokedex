@@ -1,5 +1,7 @@
 package commands
 
+import "fmt"
+
 type Pokeball struct {
 	Name            string
 	CatchMultiplier float64
@@ -27,3 +29,21 @@ var (
 		GaurenteedCatch: true,
 	}
 )
+
+func CommandPokeballs(cfg *Config, args ...string) error {
+
+	fmt.Println("Pokeballs Inventory:")
+
+	ballTypes := map[string]Pokeball{
+		"pokeball":   StandardPokeball,
+		"greatball":  GreatBall,
+		"ultraball":  UltraBall,
+		"masterball": MasterBall,
+	}
+
+	for ballType, count := range cfg.PokeballTypes {
+		fmt.Printf("%s: %d\n", ballTypes[ballType].Name, count)
+	}
+	return nil
+
+}
