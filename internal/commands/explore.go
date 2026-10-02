@@ -1,6 +1,9 @@
 package commands
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func CommandExplore(cfg *Config, args ...string) error {
 	if len(args) != 1 || args[0] == "" {
@@ -13,6 +16,31 @@ func CommandExplore(cfg *Config, args ...string) error {
 	}
 
 	fmt.Printf("Exploring %s...\n", area.Name)
+
+	// Pokeball rolling chance (chances are in pokeball.go)
+	ballOptions := []struct {
+		key  string
+		ball Pokeball
+	}{
+		{"pokeball", StandardPokeball},
+		{"greatball", GreatBall},
+		{"ultraball", UltraBall},
+		{"masterball", MasterBall},
+	}
+
+	roll := rand.Float64()
+	threshold := 0.0
+
+	for _, option := range ballOptions {
+		threshold += option.ball.SpawnChance
+
+		if roll < float64(threshold) {
+			cfg.PokeballTypes[option.key]++
+			fmt.Printf("You have found a %s!\n", option.ball.Name)
+			break
+		}
+	}
+
 	if len(area.PokemonEncounters) == 0 {
 		fmt.Println("No Pokemon found.")
 		return nil

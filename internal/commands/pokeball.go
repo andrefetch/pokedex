@@ -6,6 +6,7 @@ type Pokeball struct {
 	Name            string
 	CatchMultiplier float64
 	GaurenteedCatch bool
+	SpawnChance     float64
 }
 
 var (
@@ -13,20 +14,24 @@ var (
 		Name:            "Poke Ball",
 		CatchMultiplier: 1.0,
 		GaurenteedCatch: false,
+		SpawnChance:     0.70,
 	}
 	GreatBall = Pokeball{
 		Name:            "Great Ball",
 		CatchMultiplier: 1.5,
 		GaurenteedCatch: false,
+		SpawnChance:     0.20,
 	}
 	UltraBall = Pokeball{
 		Name:            "Ultra Ball",
 		CatchMultiplier: 2.0,
 		GaurenteedCatch: false,
+		SpawnChance:     0.10,
 	}
 	MasterBall = Pokeball{
 		Name:            "Master Ball",
 		GaurenteedCatch: true,
+		SpawnChance:     0.01,
 	}
 )
 
