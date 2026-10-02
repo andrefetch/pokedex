@@ -55,7 +55,6 @@ Your ball inventory and caught Pokemon are stored in memory and reset when you e
 ## Roadmap
 
 - [x] Multiple Pokeball types and inventory
-- [ ] Bubble Tea integration and TUI customization
 - [ ] Simulated battles and parties
 - [ ] Persistent ball inventory and caught Pokemon across sessions
 - [ ] Pokemon evolution
