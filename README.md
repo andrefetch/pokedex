@@ -47,14 +47,3 @@ Each catch attempt consumes a ball, whether it succeeds or fails. Use `inspect` 
 Supported ball types: `pokeball`, `greatball`, `ultraball`, and `masterball`. You must have the selected ball in your inventory to use it.
 
 Your ball inventory and caught Pokemon are stored in memory and reset when you exit. 
-
-> [!NOTE]
-> Working on a persistent storage system, so your Pokemon and Pokeballs don't disappear. 
-
-## Roadmap
-
-- [x] Multiple Pokeball types and inventory
-- [ ] Simulated battles and parties
-- [ ] Persistent ball inventory and caught Pokemon across sessions
-- [ ] Pokemon evolution
-- [ ] Additional unit tests
