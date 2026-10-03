@@ -2,9 +2,6 @@
 
 An interactive command-line Pokedex built in Go that uses HTTP requests to fetch Pokemon and location data from PokeAPI. Explore locations, catch Pokemon with different Pokeball types, manage your ball inventory, and grow your collection. An in-memory cache reduces redundant API requests and speeds up repeated commands.
 
-> [!NOTE]
-> The CLI is functional. A Bubble Tea TUI is currently in development.
-
 ## Installation
 
 Requires Go. Install it @ [go.dev](https://go.dev/doc/install).
