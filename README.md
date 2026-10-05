@@ -4,6 +4,9 @@ An interactive command-line Pokedex built in Go that uses HTTP requests to fetch
 
 ![Pokedex command-line interface](assets/pokedex-border.png)
 
+> [!NOTE]
+> Terminal User Interface is still under development, using [Lip Gloss](https://github.com/charmbracelet/lipgloss) for colors!   
+
 ## Installation
 
 Requires Go. Install it @ [go.dev](https://go.dev/doc/install).
