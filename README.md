@@ -2,8 +2,10 @@
 
 An interactive command-line Pokedex built in Go that uses HTTP requests to fetch Pokemon and location data from PokeAPI. Explore locations, catch Pokemon with different Pokeball types, manage your ball inventory, and grow your collection. An in-memory cache reduces redundant API requests and speeds up repeated commands.
 
+![Pokedex command-line interface](assets/pokedex-border.png)
+
 > [!NOTE]
-> The CLI is functional. A Bubble Tea TUI is currently in development.
+> Terminal User Interface is still under development, using [Lip Gloss](https://github.com/charmbracelet/lipgloss) for colors!   
 
 ## Installation
 
@@ -48,14 +50,3 @@ Each catch attempt consumes a ball, whether it succeeds or fails. Use `inspect` 
 Supported ball types: `pokeball`, `greatball`, `ultraball`, and `masterball`. You must have the selected ball in your inventory to use it.
 
 Your ball inventory and caught Pokemon are stored in memory and reset when you exit. 
-
-> [!NOTE]
-> Working on a persistent storage system, so your Pokemon and Pokeballs don't disappear. 
-
-## Roadmap
-
-- [x] Multiple Pokeball types and inventory
-- [ ] Simulated battles and parties
-- [ ] Persistent ball inventory and caught Pokemon across sessions
-- [ ] Pokemon evolution
-- [ ] Additional unit tests
