@@ -37,12 +37,16 @@ func CommandCatch(cfg *Config, args ...string) error {
 		return err
 	}
 
+	randShake := rand.Intn(4) + 1
+
 	cfg.PokeballTypes[pokeballType]--
 	fmt.Printf("Throwing a %s at %s...\n", ball.Name, pokemon.Name)
-	time.Sleep(1 * time.Second)
-	fmt.Printf("%s shook...\n", ball.Name)
-	time.Sleep(1 * time.Second)
-	fmt.Printf("%s shook...\n", ball.Name)
+
+	for i := 0; i < randShake; i++ {
+		time.Sleep(1 * time.Second)
+		fmt.Printf("%s shook...\n", ball.Name)
+	}
+
 	time.Sleep(2 * time.Second)
 
 	// Higher base experience lowers the catch chance.
