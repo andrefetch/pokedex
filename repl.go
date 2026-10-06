@@ -17,7 +17,8 @@ func startRepl(cfg *commands.Config) {
 
 		if !scanner.Scan() {
 			if err := scanner.Err(); err != nil {
-				fmt.Fprintln(os.Stderr, "error reading input:", err)
+				message := fmt.Sprintf("error reading input: %v", err)
+				fmt.Fprintln(os.Stderr, errorStyle.Render(message))
 			}
 			break
 		}
@@ -36,7 +37,8 @@ func startRepl(cfg *commands.Config) {
 				fmt.Fprintln(os.Stderr, err)
 			}
 		} else {
-			fmt.Printf("%s is not a command, type help", userInput)
+			message := fmt.Sprintf("%s is not a command, type help", userInput)
+			fmt.Fprintln(os.Stderr, errorStyle.Render(message))
 			fmt.Println()
 		}
 	}
