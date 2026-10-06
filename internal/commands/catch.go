@@ -3,6 +3,7 @@ package commands
 import (
 	"fmt"
 	"math/rand"
+	"time"
 
 	"github.com/andrefetch/pokedex/internal/pokeapi"
 )
@@ -38,6 +39,11 @@ func CommandCatch(cfg *Config, args ...string) error {
 
 	cfg.PokeballTypes[pokeballType]--
 	fmt.Printf("Throwing a %s at %s...\n", ball.Name, pokemon.Name)
+	time.Sleep(1 * time.Second)
+	fmt.Printf("%s shook...\n", ball.Name)
+	time.Sleep(1 * time.Second)
+	fmt.Printf("%s shook...\n", ball.Name)
+	time.Sleep(2 * time.Second)
 
 	// Higher base experience lowers the catch chance.
 	baseChance := 100.0 / (100.0 + float64(max(pokemon.BaseExperience, 0)))
