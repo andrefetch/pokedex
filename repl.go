@@ -6,14 +6,17 @@ import (
 	"os"
 	"strings"
 
+	"charm.land/lipgloss/v2"
 	"github.com/andrefetch/pokedex/internal/commands"
 )
 
 func startRepl(cfg *commands.Config) {
 	scanner := bufio.NewScanner(os.Stdin)
 
+	var promptStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#E63946")).Bold(true)
+
 	for {
-		fmt.Print("Pokedex > ")
+		fmt.Print(promptStyle.Render("Pokedex > "))
 
 		if !scanner.Scan() {
 			if err := scanner.Err(); err != nil {
