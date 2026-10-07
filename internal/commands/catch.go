@@ -41,7 +41,8 @@ func CommandCatch(cfg *Config, args ...string) error {
 	randShake := rand.Intn(4) + 1
 
 	cfg.PokeballTypes[pokeballType]--
-	fmt.Printf("Throwing a %s at %s...\n", ball.Name, pokemon.Name)
+	message := fmt.Sprintf("Throwing a %s at %s...\n", ball.Name, pokemon.Name)
+	fmt.Println(styles.InfoStyle.Render(message))
 
 	for i := 0; i < randShake; i++ {
 		time.Sleep(1 * time.Second)
@@ -56,7 +57,8 @@ func CommandCatch(cfg *Config, args ...string) error {
 	catchChance := min(1.0, baseChance*ball.CatchMultiplier)
 
 	if !ball.GaurenteedCatch && rand.Float64() >= catchChance {
-		fmt.Printf("%s escaped!\n", pokemon.Name)
+		message := fmt.Sprintf("%s escaped!\n", pokemon.Name)
+		fmt.Println(styles.ErrorStyle.Render(message))
 		return nil
 	}
 
@@ -65,6 +67,7 @@ func CommandCatch(cfg *Config, args ...string) error {
 	}
 
 	cfg.PokemonCaught[pokemon.Name] = pokemon
-	fmt.Printf("%s was caught!\n", pokemon.Name)
+	caughtMessage := fmt.Sprintf("%s was caught!\n", pokemon.Name)
+	fmt.Println(styles.SuccessStyle.Render(caughtMessage))
 	return nil
 }
