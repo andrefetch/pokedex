@@ -7,18 +7,19 @@ import (
 	"strings"
 
 	"github.com/andrefetch/pokedex/internal/commands"
+	"github.com/andrefetch/pokedex/internal/styles"
 )
 
 func startRepl(cfg *commands.Config) {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
-		fmt.Print(pokedexPromptStyle.Render("Pokedex > "))
+		fmt.Print(styles.PokedexPromptStyle.Render("Pokedex > "))
 
 		if !scanner.Scan() {
 			if err := scanner.Err(); err != nil {
 				message := fmt.Sprintf("error reading input: %v", err)
-				fmt.Fprintln(os.Stderr, errorStyle.Render(message))
+				fmt.Fprintln(os.Stderr, styles.ErrorStyle.Render(message))
 			}
 			break
 		}
@@ -38,7 +39,7 @@ func startRepl(cfg *commands.Config) {
 			}
 		} else {
 			message := fmt.Sprintf("%s is not a command, type help", userInput)
-			fmt.Fprintln(os.Stderr, errorStyle.Render(message))
+			fmt.Fprintln(os.Stderr, styles.ErrorStyle.Render(message))
 			fmt.Println()
 		}
 	}

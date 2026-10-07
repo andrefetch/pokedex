@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/andrefetch/pokedex/internal/pokeapi"
+	"github.com/andrefetch/pokedex/internal/styles"
 )
 
 func CommandCatch(cfg *Config, args ...string) error {
@@ -44,7 +45,8 @@ func CommandCatch(cfg *Config, args ...string) error {
 
 	for i := 0; i < randShake; i++ {
 		time.Sleep(1 * time.Second)
-		fmt.Printf("%s shook...\n", ball.Name)
+		message := fmt.Sprintf("%s shook...", ball.Name)
+		fmt.Println(styles.GreyStyle.Render(message))
 	}
 
 	time.Sleep(2 * time.Second)
