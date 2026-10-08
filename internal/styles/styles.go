@@ -18,3 +18,8 @@ var (
 	InfoStyle = lipgloss.NewStyle().
 			Foreground(lipgloss.Color("#9edbe0")).Bold(true)
 )
+
+var Card = lipgloss.NewStyle().
+	Border(lipgloss.RoundedBorder()).
+	BorderForeground(lipgloss.Color("#E63946")).
+	Padding(1, 2)
